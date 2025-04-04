@@ -7,9 +7,9 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
 # Load Datasets 
-df_inventory = pd.read_csv("datasets/inventory_monitoring.csv")
-df_demand = pd.read_csv("datasets/demand_forecasting.csv")
-df_pricing = pd.read_csv("datasets/pricing_optimization.csv")
+df_inventory = pd.read_csv("/Users/dhaneshchintala/Desktop/RetailOptimization/datasets/inventory_monitoring.csv")
+df_demand = pd.read_csv("/Users/dhaneshchintala/Desktop/RetailOptimization/datasets/demand_forecasting.csv")
+df_pricing = pd.read_csv("/Users/dhaneshchintala/Desktop/RetailOptimization/datasets/pricing_optimization.csv")
 
 # Standardize column names (removes spaces)
 df_inventory.columns = df_inventory.columns.str.strip()
