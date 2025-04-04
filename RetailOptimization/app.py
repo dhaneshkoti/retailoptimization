@@ -5,20 +5,28 @@ import seaborn as sns
 import joblib  # If you're using a trained model
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
+import requests
+import pandas as pd
+import streamlit as st
 
-# ✅ GitHub Repository & Raw Data URLs
-GITHUB_REPO = "https://raw.githubusercontent.com/dhaneshkoti/RetailOptimization/datasets/"
+GITHUB_REPO = "https://raw.githubusercontent.com/dhaneshkoti/RetailOptimization/main/datasets/"
 
-# ✅ Function to load dataset (From GitHub)
 @st.cache_data
 def load_data(file_name):
+    """Fetch CSV from GitHub & return as DataFrame"""
+    file_url = GITHUB_REPO + file_name
     try:
-        file_url = GITHUB_REPO + file_name
-        df = pd.read_csv(file_url)
+        response = requests.get(file_url)
+        response.raise_for_status()  # Raise error if request fails
+        df = pd.read_csv(pd.compat.StringIO(response.text))  # Convert text to CSV
         return df
-    except Exception as e:
-        st.error(f"⚠️ Error loading `{file_name}`: {e}")
+    except requests.exceptions.RequestException as e:
+        st.error(f"⚠️ Network Error: {e}")
         return None
+    except pd.errors.ParserError:
+        st.error(f"⚠️ Error reading `{file_name}`. Check file format!")
+        return None
+
 
 # ✅ Load datasets from GitHub
 df_inventory = load_data("inventory_monitoring.csv")
