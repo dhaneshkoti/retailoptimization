@@ -6,8 +6,7 @@ import joblib  # If you're using a trained model
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 import requests
-import pandas as pd
-import streamlit as st
+
 
 GITHUB_REPO = "https://raw.githubusercontent.com/dhaneshkoti/RetailOptimization/main/datasets/"
 
