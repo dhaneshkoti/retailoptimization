@@ -6,8 +6,9 @@ import os
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
-# ✅ Set dataset directory
-DATA_PATH = "datasets"
+# ✅ Get the absolute path of the working directory
+BASE_DIR = os.getcwd()
+DATA_PATH = os.path.join(BASE_DIR, "datasets")
 
 # ✅ Function to safely load datasets
 def load_data(file_name):
