@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
 # ✅ GitHub Repository & Raw Data URLs
-GITHUB_REPO = "https://raw.githubusercontent.com/dhaneshkoti/RetailOptimization/main/datasets/"
+GITHUB_REPO = "https://raw.githubusercontent.com/dhaneshkoti/RetailOptimization/datasets/"
 
 # ✅ Function to load dataset (From GitHub)
 @st.cache_data
